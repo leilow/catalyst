@@ -1,0 +1,173 @@
+{
+  "_note": "The Doc text sync_content.py last checked each episode against, so it can report what changed in the Doc. Not used by the site.",
+  "2026-10-16": {
+    "oneLiner": "Practitioners knew which plants worked. The lab is figuring out why — and how to grow them stronger.",
+    "script": [
+      "Fermented noni and māmaki tea have been medicine in Hawaiʻi for generations. Long before scientists understood the chemistry, people knew these plants worked. That knowledge came from centuries of observation, experimentation, and practice.",
+      "Now University of Hawaiʻi researcher Dr. Nan Jiang, an assistant professor in UH Mānoa's College of Tropical Agriculture and Human Resilience, wants to understand why. He's leading the first study to map the genetics and chemistry of noni, māmaki, and moringa — plants long valued for their medicinal properties.",
+      "The goal isn't to reinvent traditional medicine. It's to understand how these plants naturally produce the compounds people have relied on for generations. That knowledge could help farmers grow healthier, more resilient crops through selective breeding and better growing practices — without genetic modification.",
+      "For māmaki, the research goes beyond medicine. The native plant is the host for the endangered Kamehameha butterfly, and many Hawaiʻi Island farms grow it beneath koa and ʻōhiʻa forests. Stronger māmaki could support both local agriculture and native ecosystems.",
+      "Traditional knowledge pointed researchers to the plants. Modern science is helping explain how they work. If those discoveries strengthen Hawaiʻi's farms and forests, everyone stands to benefit. Let's make sure that happens!"
+    ],
+    "sources": [
+      "https://www.hawaii.edu/news/2026/07/09/plants-healing-power/",
+      "https://cms.ctahr.hawaii.edu/",
+      "https://pubmed.ncbi.nlm.nih.gov/14664736/"
+    ]
+  },
+  "2026-10-02": {
+    "oneLiner": "A game taught face to face for centuries just got a version you can play from Washington — and the question is what carries it after that.",
+    "script": [
+      "Kōnane is having a renaissance. Uncle John Kaʻohelauliʻi has been teaching the game on Kauaʻi since 2011, and wrote the Black Book of Kōnane 2023. This February, Kapena Baptista won the first statewide tournament in modern memory playing a koa papamu from Queen Kapiʻolani's collection.",
+      "Some have called it Hawaiian checkers, yet Konane is a game of logic and strategy, closer to chess or go, and it's found nowhere else on earth. Now the game can be played online thanks to Andrew \"Keahi\" Castro. His ʻohana is from Oahu, yet he grew up in California, and currently lives in Washington. From there, using a background in mathematics and statistics, he spent years building Likōnane, while finishing a Hawaiian studies degree through Windward Community College entirely online. The app, Likōnane, includes remote play, puzzles, teaching resources, rankings, a forum, and ʻŌlelo Hawaiʻi throughout.",
+      "There's also an AI opponent, named Lopako. There was a moment when a computer beating a grandmaster at chess was the definition of intelligence. Kōnane asks for something else entirely. Take only what you need, Baptista says, and you'll likely win. Take too much and you may lose.",
+      "Uncle John teaches kōnane face to face, and he's part of the lineage reviving it. Now Keahi has built it into code and made it free to the world. So what comes next? I'm excited to find out."
+    ],
+    "sources": [
+      "https://www.hawaii.edu/news/2026/07/27/likonane/",
+      "https://likonane.com",
+      "https://windward.hawaii.edu/hawaiiloa/",
+      "https://www.konane.com/",
+      "https://kauainownews.com/2024/11/23/kauai-konane-expert-working-to-revitalize-ancient-hawaiian-board-game/",
+      "https://kanaeokana.net/papamu-podcast/"
+    ]
+  },
+  "2026-08-21": {
+    "oneLiner": "The study says the cheapest cooling is running out. The read underneath it is that cooling, not chips, is about to be where the money goes.",
+    "script": [
+      "The cheapest way to cool a room full of computers is to open a window and skip the air conditioning. The industry calls it direct air free cooling, and it holds right up until the weather stops cooperating.",
+      "Dr. Christina KA-RAM-PER-EE-DOO, an atmospheric scientist at UH Mānoa, asked how often that still works. She and her co-authors matched 45 years of hourly weather and climate projections against a global map of where data centers actually sit, and found more hours too hot and too humid to open the windows — concentrated across the tropics and the southeastern U.S. More facilities are now hitting those limits for at least a quarter of the year.",
+      "The sharper finding is about the extremes. Worst-day conditions are intensifying faster than average ones, which means planning around a typical year misses the days that actually break things.",
+      "Data centers aren't only about AI. They run hospitals, banks, the power grid, emergency dispatch. When outside air stops working, Karamperidou says what's left is a trade-off among reliability, energy, and water. Refrigeration cooling brings up electricity costs. And evaporation cooling eat up water.",
+      "And the industry is responding. Elemental Impact launched a data center initiative in May funding startups in cooling that cuts energy and water at once. And EarthFrame, cofounded by Kānaka Maoli geneticist Keolu Fox, builds small efficient systems designed around air cooling — so communities can own their computer and data storage.",
+      "Hot and humid is the forecast for much of the world in the near future. Yet, it's the baseline in Hawaii. So what gets planned for — the average year, or the worst day, and how can we lead in this area of innovation?"
+    ],
+    "sources": [
+      "https://www.hawaii.edu/news/2026/07/13/ai-data-center-cooling/",
+      "https://www.earthframe.com/",
+      "https://earth.engineering",
+      "https://www.energy.gov/eere/buildings/data-centers"
+    ]
+  },
+  "2026-08-07": {
+    "oneLiner": "UH has a plan for AI across ten campuses — but its success may depend less on the technology than on the people hired to build it.",
+    "script": [
+      "President Wendy Hensel says artificial intelligence is like electricity: infrastructure that will eventually touch every part of the University of Hawaiʻi. That's the thinking behind UH's first systemwide AI strategy, presented to the Board of Regents on July 16.",
+      "The roadmap spans all ten campuses, weaving AI into teaching, research, university operations, and workforce development. It also proposes an Aloha Intelligence Institute grounded in ethical governance, Native Hawaiian values, and public benefit. An earlier version of the proposal envisioned about $4 million over two years, including funding for ten permanent positions. The strategy also calls for a systemwide AI cluster hire — a coordinated effort to recruit faculty across disciplines.",
+      "Turning that vision into reality is Gloria Niles, who became UH's chief academic technology innovation officer in March after years leading online learning across the university system. The work has already begun: AI for Hawaiʻi, a free twelve-chapter course, is available through the university's OneAI Hub, while UH Community Colleges are separately partnering with MIT to expand AI workforce training.",
+      "But strategies don't implement themselves. They become budgets, hiring decisions, and research priorities. Whether UH develops AI expertise from within Hawaiʻi, recruits it from elsewhere, or builds teams that can do both may shape the university's AI future as much as the technology itself."
+    ],
+    "sources": [
+      "https://hawaii.edu/oneai/",
+      "https://hawaii.edu/offices/bor/",
+      "https://www.youtube.com/watch?v=qkIpT_fjgoI",
+      "https://www.hawaii.edu/news/2025/02/20/uh-manoa-research-one-designation/"
+    ]
+  },
+  "2026-07-17": {
+    "oneLiner": "Hawaiʻi's conservation scientists have been working through biocontrol for years. Now the same ideas are attracting attention from one of the world's largest technology companies.",
+    "script": [
+      "The Hawaiʻi Conservation Conference is coming up in July. This year's theme is ʻImi i ke Ewe o ka ʻĀina — may we be guided by the wisdom of ʻāina.",
+      "Across three days, researchers, cultural practitioners, students, and community members will gather around Hawaiʻi's urgent questions: climate change, restoration, invasive species, and the future of native ecosystems.",
+      "One conversation making national headlines is biocontrol.",
+      "Through the Birds, Not Mosquitoes initiative, conservation partners on Maui and Kauaʻi are releasing Wolbachia-treated male mosquitoes to help protect native honeycreepers from avian malaria. The males don't bite, and when they mate with wild females, the eggs don't hatch. It is careful work, moving through science, permits, public meetings, policy, and community concern.",
+      "Now Alphabet's Debug project is seeking approval to release treated mosquitoes in California and Florida, aimed at reducing dengue and Zika in humans. When a company like Google enters this field, the question shifts: Is it scaling a public-health tool, a data system, or a new kind of environmental decision-making?",
+      "As temperatures rise and ecosystems change, more places are facing challenges islands have been navigating for generations. What looks like conservation in Hawaiʻi is also innovation: sustainable, place-based, and increasingly relevant to the rest of the world.",
+      "That's what I'll be listening for at ConCon. For more information, visit hawaiiconservation.org."
+    ],
+    "sources": [
+      "https://www.smithsonianmag.com/smart-news/scientists-are-using-drones-to-unleash-thousands-of-mosquitoes-in-hawaii-in-a-bid-to-save-native-birds-heres-how-it-works-180986821/",
+      "https://www.birdsnotmosquitoes.org/",
+      "https://www.fws.gov/project/saving-kauai-forest-birds",
+      "https://dlnr.hawaii.gov/blog/2023/06/23/nr23-109/",
+      "https://www.nps.gov/articles/000/hale-rad.htm",
+      "https://debug.com/how/",
+      "https://www.theguardian.com/technology/2026/jun/01/google-permission-release-mosquitoes-california-florida",
+      "https://www.sfchronicle.com/health/article/google-mosquito-release-california-22288331.php"
+    ]
+  },
+  "2026-07-03": {
+    "oneLiner": "Coworking was never really about desks. As Hawaiʻi's first generation fades, it's worth asking what we're trying to build in its place.",
+    "script": [
+      "Coworking didn't begin as real estate. It began as an attempt to make independent work feel less lonely.",
+      "In 2005, software engineer Brad Neuberg opened one of the first modern coworking experiments in San Francisco. His goal was simple: exercising freedom while building community in a rigorous work environment.",
+      "Hawaiʻi found its own version in 2011, when BoxJelly opened. Then came The Hub, Waiwai Collective, and the Entrepreneurs Sandbox. Membership meant more than a desk. It could look like a workshop after hours, a pitch night, a hackathon, a soup club, or a conversation that changed the direction of someone's life.",
+      "That was the quiet value: the unexpected encounter. What writer Steven Johnson calls a \"liquid network\": a place where half-formed ideas have room to collide, recombine, and become something more.",
+      "Now that first generation is changing. Waiwai Collective closed last year. The Hub is winding down. And BoxJelly's longtime home at Ward Centre faces demolition this summer.",
+      "At the same time, a new generation is emerging across the islands with a different name: work clubs, innovation hubs, makerspaces, 3rd spaces and experiments in gathering.",
+      "While coworking culture from Berlin to New York has been about rigor, network, and boundary pushing — Hawaii's approach has always been able belonging. In today's economy, can we continue creating the conditions where people build things together intentionally — companies, technology, convenings, trust — that support radical futures that couldn't have imagined without collision?"
+    ],
+    "sources": [
+      "https://codinginparadise.org/ebooks/html/blog/start_of_coworking.html",
+      "https://www.coworkingresources.org/blog/history-of-coworking",
+      "https://www.workboxcompany.com/workspace-guides/the-evolution-of-coworking-when-did-it-really-start/",
+      "https://www.htdc.org/the-entrepreneurs-sandbox-officially-opens-on-october-10-2019/",
+      "https://waiwaicollective.com/",
+      "https://www.linkedin.com/posts/namvu1_after-nearly-9-incredible-years-the-hub-activity-7467403549254152192-WNmA",
+      "https://www.hawaiinewsnow.com/2025/07/16/permit-application-filed-demolition-ward-centre/",
+      "https://www.index-space.org/",
+      "https://www.index-space.org/about",
+      "https://www.index-space.org/irl/nyc",
+      "https://www.treehousecoworking.com/",
+      "https://www.abovethewavemaui.com/",
+      "https://www.instagram.com/kolabhawaii/",
+      "https://www.kilohnl.com/",
+      "https://ourspacehawaii.org/",
+      "https://en.wikipedia.org/wiki/The_Great_Good_Place"
+    ]
+  },
+  "2026-06-19": {
+    "oneLiner": "A $1.25M NSF grant accelerates Hawaiʻi's growing network of locally-designed environmental sensors, signaling a shift from consuming technology to architecting our own resilience.",
+    "script": [
+      "A quiet revolution has been taking shape across the archipelago: a \"homegrown nervous system\" of localized sensors monitoring everything from wildfire ignition to heavy metal runoff in our watersheds.",
+      "The National Science Foundation just awarded a 1.25-million-dollar grant to a team led by UH Mānoa's Tyler Ray, Georgia Tech's Josiah Hester — a Native Hawaiian computing professor — and UH co-PI Aurora Kagawa-Viviani at the Water Resources Research Center. Together, they're building low-cost, 3D-printed biosensors paired with AI-enabled edge devices that process data on-site — so they keep working even when the grid goes dark.",
+      "The timing is exciting. Our islands are already a proving ground for distributed sensing — from Hohonu, the UH spinoff building climate mitigation technology, to the AI-driven Sage nodes near Volcanoes National Park. What makes this new project distinctive is its commitment to co-designing with ʻāina stewards, kūpuna, and immersion schools.",
+      "If the future of climate response is decentralized, how does our relationship with the land change when the data is as rooted in place as the people who live there?"
+    ],
+    "sources": [
+      "https://www.kitv.com/news/local/hawaii-researchers-secure-1-25m-for-real-time-disaster-sensors/article_fd4a6312-72ef-4944-adab-1eaa27ccc363.html",
+      "https://www.hawaii.edu/news/2025/12/07/hawaii-hazard-monitoring-project/",
+      "https://www.nsf.gov/awardsearch/show-award/?AWD_ID=2531574",
+      "https://www.hwmo.org/wildfiresummit2026",
+      "https://www.hohonu.io",
+      "https://datascience.hawaii.edu/from-wildfires-to-bird-calls-sage-redefines-environmental-monitoring/"
+    ]
+  },
+  "2026-06-05": {
+    "oneLiner": "Drones map shorelines and rail systems for industry. On Kauaʻi, they're also mapping a heiau for the community that's always belonged to it.",
+    "script": [
+      "Drone technology has quietly become one of the biggest growth industries in tech. Across the Hawaiian Islands, companies like LiDAR Hawaii use drones to map shoreline erosion. The Skyline rail in Honolulu is being scanned the same way. Globally, 3D scanning is a five-billion-dollar industry, on track to nearly triple over the next decade.",
+      "On Kauaʻi, community college students have been flying drones over a sacred site called Malaehaʻakoa, in Wailua. They're building a 3D model of the heiau to help inform its restoration — a paid internship run by UH's Indigenous Data Hub, in collaboration with I Ola Wailuanui.",
+      "They're learning industry-standard skills — photogrammetry, 3D modeling, and archaeological surveying — by doing work that matters to their own community. The coordinator, Kamalani Chock, said the team treats the heiau as an ancestor.",
+      "The 3D models are guiding the restoration, in partnership with the community organization working to protect the site.",
+      "So: what changes when the people learning the technology are also the people the data belongs to?"
+    ],
+    "sources": [
+      "https://www.hawaii.edu/news/2026/04/24/high-tech-kauai-cc-internships/",
+      "https://www.instagram.com/reels/DX71eSFPwQH/",
+      "https://kauainownews.com/2026/04/29/kaua%CA%BBi-community-college-internships-combine-high-tech-with-cultural-preservation/",
+      "https://research.hawaii.edu/oiki/",
+      "https://hawaiilidar.com/",
+      "https://www.thefuture3d.com/services/lidar-drone-surveying-mapping/honolulu/",
+      "https://finance.yahoo.com/news/3d-scanner-market-size-grow-060000818.html"
+    ]
+  },
+  "2026-05-15": {
+    "oneLiner": "Eahou Fest brought 25 global leaders to Mōʻiliʻili to prototype regenerative finance, Indigenous data sovereignty, and a tech stack accountable to ʻāina.",
+    "script": [
+      "Earlier this May, the second annual Eahou Fest transformed Mōʻiliʻili's Japanese Cultural Center into a hub for ancestral knowledge and emerging tech. Described as a \"SXSW for the Pacific,\" the event was a partnership between Purple Maiʻa and New York-based Breakout, bringing together global leaders working across regenerative finance, Indigenous data sovereignty, and aloha ʻāina.",
+      "The weekend hybridized spaces beautifully — Friday's Short Film Festival at Shinnyo-en Hawaiʻi temple, Saturday's public mākeke at Church of the Crossroads, with a neighborhood anchor for tech workshops at Koa Ka, the new cafe spot opening in Mōʻiliʻili.",
+      "One standout session, \"Ahupuaʻa Sustainable Computing,\" took on the extractive nature of data centers — proposing a circular computing future for Hawaiʻi that respects local watersheds and grids.",
+      "From food security to homegrown digital tools, Eahou Fest served as a living laboratory for a community-built tech stack. As global AI expands, can we build systems as accountable to our environment as they are to our users?",
+      "For a full recap, visit eahoufest.com."
+    ],
+    "sources": [
+      "https://eahoufest.com",
+      "https://purplemaia.org",
+      "https://www.breakout.today/",
+      "https://www.jcch.com",
+      "https://www.shinnyoenhawaii.org/",
+      "https://www.instagram.com/koa.kacoffee/"
+    ]
+  }
+}

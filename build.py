@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Build The Catalyst site into dist/.
 
-Reads content/episodes.json, downloads each episode's audio from Google Drive
-(cached in .cache/audio), and writes static HTML. Standard library only, so it
-runs the same on a Mac and in a GitHub Action.
+Reads content/episodes.json, downloads each episode's audio (and its image, when
+it has an imageDriveId) from Google Drive, cached in .cache/, and writes static
+HTML. Standard library only, so it runs the same on a Mac and in a GitHub Action.
 
     python3 build.py          # build
     python3 build.py --serve  # build, then preview at http://localhost:8000
@@ -20,6 +20,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 DIST = ROOT / "dist"
 CACHE = ROOT / ".cache" / "audio"
+IMAGE_CACHE = ROOT / ".cache" / "images"
 
 SITE_TITLE = "The Catalyst"
 SITE_BLURB = "A bi-weekly tech byte by Leimomi on Bytemarks Café, Hawaiʻi Public Radio."
@@ -74,20 +75,43 @@ def head(title, description, prefix):
 </head>"""
 
 
+def drive_download(drive_id, tmp):
+    url = f"https://drive.usercontent.google.com/download?id={drive_id}&export=download"
+    subprocess.run(["curl", "-sSfL", "-o", str(tmp), url], check=True)
+    with open(tmp, "rb") as f:
+        return f.read(12)
+
+
 def fetch_audio(drive_id):
     """Download a publicly shared Drive file once and reuse it after that."""
     CACHE.mkdir(parents=True, exist_ok=True)
     out = CACHE / f"{drive_id}.mp3"
     if out.exists() and out.stat().st_size > 0:
         return out
-    url = f"https://drive.usercontent.google.com/download?id={drive_id}&export=download"
     tmp = out.with_suffix(".part")
-    subprocess.run(["curl", "-sSfL", "-o", str(tmp), url], check=True)
-    with open(tmp, "rb") as f:
-        start = f.read(3)
-    if start not in (b"ID3",) and start[:2] not in (b"\xff\xfb", b"\xff\xf3", b"\xff\xf2"):
+    start = drive_download(drive_id, tmp)
+    if start[:3] not in (b"ID3",) and start[:2] not in (b"\xff\xfb", b"\xff\xf3", b"\xff\xf2"):
         tmp.unlink()
         raise RuntimeError(f"Drive file {drive_id} did not download as audio. Is it shared as 'Anyone with the link'?")
+    tmp.rename(out)
+    return out
+
+
+def fetch_image(drive_id):
+    """Like fetch_audio, for an episode image (WebP, JPEG or PNG)."""
+    IMAGE_CACHE.mkdir(parents=True, exist_ok=True)
+    for old in IMAGE_CACHE.glob(f"{drive_id}.*"):
+        if old.suffix != ".part" and old.stat().st_size > 0:
+            return old
+    tmp = IMAGE_CACHE / f"{drive_id}.part"
+    start = drive_download(drive_id, tmp)
+    ext = ("webp" if start[:4] == b"RIFF" and start[8:12] == b"WEBP" else
+           "jpg" if start[:3] == b"\xff\xd8\xff" else
+           "png" if start[:8] == b"\x89PNG\r\n\x1a\n" else None)
+    if not ext:
+        tmp.unlink()
+        raise RuntimeError(f"Drive file {drive_id} did not download as an image. Is it shared as 'Anyone with the link'?")
+    out = tmp.with_suffix(f".{ext}")
     tmp.rename(out)
     return out
 
@@ -203,6 +227,13 @@ def build():
     if (ROOT / "content" / "images").exists():
         shutil.copytree(ROOT / "content" / "images", DIST / "images")
     (DIST / ".nojekyll").write_text("")
+    for ep in episodes:
+        # a Drive image from the Sheet wins over content/images/<date>.*
+        if ep.get("imageDriveId"):
+            src = fetch_image(ep["imageDriveId"])
+            (DIST / "images").mkdir(exist_ok=True)
+            ep["image"] = f'images/{ep["date"]}{src.suffix}'
+            shutil.copyfile(src, DIST / ep["image"])
 
     (DIST / "index.html").write_text(home_page(episodes), encoding="utf-8")
     for i, ep in enumerate(episodes):
