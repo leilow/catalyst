@@ -3,10 +3,21 @@ name: Build and publish
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: "0 9 * * *" # daily, 11pm in Honolulu
   workflow_dispatch:
+    inputs:
+      from_doc:
+        description: "Use the Doc's text for these air dates (e.g. 2026-10-16, or all)"
+        required: false
+        default: ""
+      keep_site:
+        description: "Keep the site's text for these air dates and stop reporting them"
+        required: false
+        default: ""
 
 permissions:
-  contents: read
+  contents: write # commit the synced content back to main
   pages: write
   id-token: write
 
@@ -20,12 +31,37 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Episode audio is downloaded from Google Drive; keep it between runs.
+      # Pull new and changed episodes from the Schedule sheet and Scripts doc.
+      # Without CATALYST_SHEET_ID this step skips and the build uses episodes.json as it is.
+      - name: Sync from Google Sheet and Doc
+        if: github.ref == 'refs/heads/main'
+        env:
+          CATALYST_SHEET_ID: ${{ secrets.CATALYST_SHEET_ID }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          FROM_DOC: ${{ inputs.from_doc }}
+          KEEP_SITE: ${{ inputs.keep_site }}
+        run: python3 sync_content.py --from-doc "$FROM_DOC" --keep-site "$KEEP_SITE"
+
+      - name: Save synced content
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git add content/episodes.json content/doc-snapshot.json
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Sync episodes from the Sheet and Doc"
+            git pull --rebase
+            git push
+          fi
+
+      # Episode audio and images are downloaded from Google Drive; keep them between runs.
       - uses: actions/cache@v4
         with:
-          path: .cache/audio
-          key: audio-${{ hashFiles('content/episodes.json') }}
-          restore-keys: audio-
+          path: |
+            .cache/audio
+            .cache/images
+          key: drive-${{ hashFiles('content/episodes.json') }}
+          restore-keys: drive-
 
       - run: python3 build.py
 
