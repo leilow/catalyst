@@ -30,7 +30,7 @@
   const ss = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
 
   new p5((p) => {
-    let W, H, u, v, u2, v2, g, g2, yl, yl2, ce, img, holdSec = 0, washes = [], washLife = 0, calmFrames = 0, lx = null, ly = null, heat = 0, mouseIn = false, warmup = 0, greenLife = 0, greenClock = 0;
+    let W, H, u, v, u2, v2, g, g2, yl, yl2, ce, img, holdSec = 0, washes = [], washLife = 0, calmFrames = 0, wasHolding = false, bgPress = false, lastPressAt = 0, lastFrameMs = 0, lx = null, ly = null, heat = 0, mouseIn = false, warmup = 0, greenLife = 0, greenClock = 0;
 
     // How much a cell conducts green: only cells that are part of a strand.
     const strand = (x) => ss(0.08, 0.16, x);
@@ -61,7 +61,11 @@
       for (let i = 0; i < W * H; i++) { g[i] *= rate; yl[i] *= rate; }
     }
 
+    // Bells (assets/sound.js) are optional; the sketch works the same without them.
+    const bell = (name, ...args) => { if (window.catalystSound) window.catalystSound[name](...args); };
+
     function startWash(px, py) {
+      bell("wash");
       if (reduced) { calmFrames = 60; return; } // no ripple; just let the colors settle away
       washes.push({ x: (px / p.width) * W, y: (py / p.height) * H, r: 0 });
       washLife = 240;
@@ -168,6 +172,7 @@
 
       // Only the open background counts, not titles, tags, links, or the episode panel.
       const onBackground = (el) => !(el && el.closest && el.closest("a, button, input, .tags, .panel, .links"));
+      document.addEventListener("pointerdown", (e) => { bgPress = onBackground(e.target); }, { passive: true });
       document.addEventListener("dblclick", (e) => { if (onBackground(e.target)) startWash(e.clientX, e.clientY); });
       let lastTap = null;
       document.addEventListener("touchend", (e) => {
@@ -222,8 +227,18 @@
 
       // Green only runs while someone is holding, and for a while after it fades.
       const holding = inside && p.mouseIsPressed;
-      const dt = Math.min(p.deltaTime, 250) / 1000;
+      const nowMs = performance.now();
+      const dt = Math.min(nowMs - (lastFrameMs || nowMs), 250) / 1000; // seconds since last frame
+      lastFrameMs = nowMs;
+      if (holding && !wasHolding && bgPress) {
+        const now = performance.now();
+        if (now - lastPressAt > 400) bell("press", p.mouseX / p.width); // the 2nd click of a double-click stays quiet
+        lastPressAt = now;
+      }
+      wasHolding = holding;
+      const before = holdSec;
       holdSec = holding ? holdSec + dt : 0;
+      if (bgPress && before <= YELLOW_AFTER_SEC && holdSec > YELLOW_AFTER_SEC) bell("ripen");
       if (holding) greenLife = 1500;
       if (greenLife > 0) {
         greenLife--;

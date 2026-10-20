@@ -156,12 +156,14 @@ def home_page(episodes):
       <a class="chip" href="{NPR_PODCAST}">NPR podcast ↗</a>
       <a class="chip" href="{LINKEDIN}">LinkedIn ↗</a>
       <a class="chip" href="{HPR_PROFILE}">Leimomi on HPR ↗</a>
+      <button class="chip sound-toggle" type="button" aria-pressed="true">Sound on</button>
     </div>
   </footer>
 </main>
 <script src="{P5}"></script>
 <script src="assets/sketch.js?v={VERSION}"></script>
 <script src="assets/site.js?v={VERSION}"></script>
+<script src="assets/sound.js?v={VERSION}"></script>
 </body>
 </html>
 """

@@ -248,3 +248,7 @@ a { color: var(--ink); }
 @media (prefers-reduced-motion: reduce) {
   .panel { transition: none; }
 }
+
+/* Sound on/off reads as quieter than the outbound links */
+.sound-toggle { cursor: pointer; border-style: dashed; }
+.sound-toggle[aria-pressed="false"] { color: var(--ink-soft); }
