@@ -51,9 +51,9 @@
         "AI"
       ],
       "script": [
-        "Kōnane is having a renaissance. Uncle John Kaʻohelauliʻi has been teaching the game on Kauaʻi since 2011, and wrote The Black Book of Kōnane in 2023. This February, Kapena Baptista won the first statewide tournament in modern memory playing a koa papamū from Queen Kapiʻolani's collection.",
-        "Some have called it Hawaiian checkers, yet kōnane is a game of logic and strategy, closer to chess or go, and it's found nowhere else on earth. Now the game can be played online thanks to Andrew \"Keahi\" Castro. His ʻohana is from Oʻahu, yet he grew up in California, and currently lives in Washington. From there, using a background in mathematics and statistics, he spent years building Likōnane, while finishing a Hawaiian studies degree through Windward Community College entirely online. The app, Likōnane, includes remote play, puzzles, teaching resources, rankings, a forum, and ʻŌlelo Hawaiʻi throughout.",
-        "There's also an AI opponent, named Lopako. There was a moment when a computer beating a grandmaster at chess was the definition of intelligence. Kōnane asks for something else entirely. Take only what you need, Baptista says, and you'll likely win. Take too much and you may lose.",
+        "Kōnane is having a renaissance. Uncle John Kaʻohelauliʻi has been teaching the game on Kauaʻi since 2011 and wrote The Black Book of Kōnane in 2023. This February, Kapena Baptista won the first statewide tournament in modern memory, playing on a koa papamū from Queen Kapiʻolani's collection.",
+        "Some have called it Hawaiian checkers, yet kōnane is a game of logic and strategy, closer to chess or go, and it's found nowhere else on earth. Now the game can be played online thanks to Andrew \"Keahi\" Castro. His ʻohana is from Oʻahu, but he grew up in California and now lives in Washington. From there, using a background in mathematics and statistics, he spent years building Likōnane while finishing a Hawaiian studies degree through Windward Community College entirely online. The app, Likōnane, includes remote play, puzzles, teaching resources, rankings, a forum, and ʻŌlelo Hawaiʻi throughout.",
+        "There's also an AI opponent named Lopako. There was a moment when a computer beating a grandmaster at chess was the definition of intelligence. Kōnane asks for something else entirely. Take only what you need, Baptista says, and you'll likely win. Take too much and you may lose.",
         "Uncle John teaches kōnane face to face, and he's part of the lineage reviving it. Now Keahi has built it into code and made it free to the world. So what comes next? I'm excited to find out."
       ],
       "sources": [
@@ -98,11 +98,11 @@
         "UH research"
       ],
       "script": [
-        "The cheapest way to cool a room full of computers is to open a window and skip the air conditioning. The industry calls it direct air free cooling, and it holds right up until the weather stops cooperating.",
+        "The cheapest way to cool a room full of computers is to open a window and skip the air conditioning. The industry calls it direct free-air cooling, and it holds right up until the weather stops cooperating.",
         "Dr. Christina Karamperidou, an atmospheric scientist at UH Mānoa, asked how often that still works. She and her co-authors matched 45 years of hourly weather and climate projections against a global map of where data centers actually sit, and found more hours too hot and too humid to open the windows — concentrated across the tropics and the southeastern U.S. More facilities are now hitting those limits for at least a quarter of the year.",
         "The sharper finding is about the extremes. Worst-day conditions are intensifying faster than average ones, which means planning around a typical year misses the days that actually break things.",
-        "Data centers aren't only about AI. They run hospitals, banks, the power grid, emergency dispatch. When outside air stops working, Karamperidou says what's left is a trade-off among reliability, energy, and water. Refrigeration cooling drives up electricity costs. And evaporative cooling eats up water.",
-        "And the industry is responding. Elemental Impact launched a data center initiative in May funding startups in cooling that cuts energy and water at once. And EarthFrame, cofounded by Kānaka Maoli geneticist Keolu Fox, builds small efficient systems designed around air cooling — so communities can own their computing and data storage.",
+        "Data centers aren't only about AI. They run hospitals, banks, the power grid, and emergency dispatch. When outside air stops working, Karamperidou says what's left is a trade-off among reliability, energy, and water. Refrigerated cooling drives up electricity costs, and evaporative cooling eats up water.",
+        "And the industry is responding. Elemental Impact launched a data center initiative in May funding cooling startups that cut energy and water use at once. And EarthFrame, cofounded by Kānaka Maoli geneticist Keolu Fox, builds small, efficient systems designed around air cooling — so communities can own their computing and data storage.",
         "Hot and humid is the forecast for much of the world in the near future. Yet it's the baseline in Hawaiʻi. So what gets planned for — the average year, or the worst day — and how can we lead in this area of innovation?"
       ],
       "sources": [
@@ -232,12 +232,12 @@
       ],
       "script": [
         "Coworking didn't begin as real estate. It began as an attempt to make independent work feel less lonely.",
-        "In 2005, software engineer Brad Neuberg opened one of the first modern coworking experiments in San Francisco. His goal was simple: exercising freedom while building community in a rigorous work environment.",
+        "In 2005, software engineer Brad Neuberg opened one of the first modern coworking experiments in San Francisco. His goal was simple: to have freedom while building community in a rigorous work environment.",
         "Hawaiʻi found its own version in 2011, when BoxJelly opened. Then came The Hub, Waiwai Collective, and the Entrepreneurs Sandbox. Membership meant more than a desk. It could look like a workshop after hours, a pitch night, a hackathon, a soup club, or a conversation that changed the direction of someone's life.",
-        "That was the quiet value: the unexpected encounter. What writer Steven Johnson calls a \"liquid network\": a place where half-formed ideas have room to collide, recombine, and become something more.",
+        "That was the quiet value: the unexpected encounter. It's what writer Steven Johnson calls a \"liquid network\": a place where half-formed ideas have room to collide, recombine, and become something more.",
         "Now that first generation is changing. Waiwai Collective closed last year. The Hub is winding down. And BoxJelly's longtime home at Ward Centre faces demolition this summer.",
         "At the same time, a new generation is emerging across the islands with a different name: work clubs, innovation hubs, makerspaces, third spaces, and experiments in gathering.",
-        "While coworking culture from Berlin to New York has been about rigor, network, and boundary pushing, Hawaiʻi's approach has always been about belonging. In today's economy, can we continue creating the conditions where people build things together intentionally — companies, technology, convenings, trust — that support radical futures we couldn't have imagined without collision?"
+        "While coworking culture from Berlin to New York has been about rigor, networking, and boundary-pushing, Hawaiʻi's approach has always been about belonging. In today's economy, can we continue creating the conditions where people build things together intentionally — companies, technology, convenings, trust — things that support radical futures we couldn't have imagined without collision?"
       ],
       "sources": [
         {
@@ -286,7 +286,7 @@
       ],
       "script": [
         "A quiet revolution has been taking shape across the archipelago: a \"homegrown nervous system\" of localized sensors monitoring everything from wildfire ignition to heavy metal runoff in our watersheds.",
-        "The National Science Foundation just awarded a 1.25-million-dollar grant to a team led by UH Mānoa's Tyler Ray, Georgia Tech's Josiah Hester — a Native Hawaiian computing professor — and UH co-PI Aurora Kagawa-Viviani at the Water Resources Research Center. Together, they're building low-cost, 3D-printed biosensors paired with AI-enabled edge devices that process data on-site — so they keep working even when the grid goes dark.",
+        "The National Science Foundation just awarded a $1.25 million grant to a team led by UH Mānoa's Tyler Ray, Georgia Tech's Josiah Hester — a Native Hawaiian computing professor — and UH co-PI Aurora Kagawa-Viviani at the Water Resources Research Center. Together, they're building low-cost, 3D-printed biosensors paired with AI-enabled edge devices that process data on-site — so they keep working even when the grid goes dark.",
         "The timing is exciting. Our islands are already a proving ground for distributed sensing — from Hohonu, the UH spinoff building climate mitigation technology, to the AI-driven Sage nodes near Volcanoes National Park. What makes this new project distinctive is its commitment to co-designing with ʻāina stewards, kūpuna, and immersion schools.",
         "If the future of climate response is decentralized, how does our relationship with the land change when the data is as rooted in place as the people who live there?"
       ],
@@ -332,8 +332,8 @@
         "UH research"
       ],
       "script": [
-        "Drone technology has quietly become one of the biggest growth industries in tech. Across the Hawaiian Islands, companies like LiDAR Hawaii use drones to map shoreline erosion. The Skyline rail in Honolulu is being scanned the same way. Globally, 3D scanning is a five-billion-dollar industry, on track to nearly triple over the next decade.",
-        "On Kauaʻi, community college students have been flying drones over a sacred site called Malaehaʻakoa, in Wailua. They're building a 3D model of the heiau to help inform its restoration — a paid internship run by UH's Indigenous Data Hub, in collaboration with I Ola Wailuanui.",
+        "Drone technology has quietly become one of the biggest growth industries in tech. Across the Hawaiian Islands, companies like LiDAR Hawaii use drones to map shoreline erosion. The Skyline rail in Honolulu is being scanned the same way. Globally, 3D scanning was a $3.5 billion industry in 2022, on track to reach nearly $17 billion by 2035.",
+        "On Kauaʻi, community college students have been flying drones over a sacred site called Malaehaʻakoa, in Wailua. They're building a 3D model of the heiau to help inform its restoration — part of a paid internship run by UH's Indigenous Data Hub, in collaboration with I Ola Wailuanui.",
         "They're learning industry-standard skills — photogrammetry, 3D modeling, and archaeological surveying — by doing work that matters to their own community. The coordinator, Kamalani Chock, said the team treats the heiau as an ancestor.",
         "The 3D models are guiding the restoration, in partnership with the community organization working to protect the site.",
         "So: what changes when the people learning the technology are also the people the data belongs to?"
@@ -385,7 +385,7 @@
       ],
       "script": [
         "Earlier this May, the second annual Eahou Fest transformed Mōʻiliʻili's Japanese Cultural Center into a hub for ancestral knowledge and emerging tech. Described as a \"SXSW for the Pacific,\" the event was a partnership between Purple Maiʻa and New York-based Breakout, bringing together global leaders working across regenerative finance, Indigenous data sovereignty, and aloha ʻāina.",
-        "The weekend hybridized spaces beautifully — Friday's Short Film Festival at Shinnyo-en Hawaiʻi temple, Saturday's public mākeke at Church of the Crossroads, with a neighborhood anchor for tech workshops at Koa Ka, the new cafe spot opening in Mōʻiliʻili.",
+        "The weekend moved beautifully between spaces: Friday's Short Film Festival at Shinnyo-en Hawaiʻi temple, Saturday's public mākeke at Church of the Crossroads, and a neighborhood anchor for tech workshops at Koa Ka, a new café opening in Mōʻiliʻili.",
         "One standout session, \"Ahupuaʻa Sustainable Computing,\" took on the extractive nature of data centers — proposing a circular computing future for Hawaiʻi that respects local watersheds and grids.",
         "From food security to homegrown digital tools, Eahou Fest served as a living laboratory for a community-built tech stack. As global AI expands, can we build systems as accountable to our environment as they are to our users?",
         "For a full recap, visit eahoufest.com."
