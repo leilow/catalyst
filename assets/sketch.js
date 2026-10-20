@@ -30,7 +30,7 @@
   const ss = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
 
   new p5((p) => {
-    let W, H, u, v, u2, v2, g, g2, yl, yl2, ce, img, holdSec = 0, washes = [], washLife = 0, calmFrames = 0, wasHolding = false, bgPress = false, lastPressAt = 0, lastFrameMs = 0, lx = null, ly = null, heat = 0, mouseIn = false, warmup = 0, greenLife = 0, greenClock = 0;
+    let W, H, u, v, u2, v2, g, g2, yl, yl2, ce, img, holdSec = 0, washes = [], washLife = 0, calmFrames = 0, wasHolding = false, bgPress = false, lastPressAt = 0, lastFrameMs = 0, dragZone = null, lx = null, ly = null, heat = 0, mouseIn = false, warmup = 0, greenLife = 0, greenClock = 0;
 
     // How much a cell conducts green: only cells that are part of a strand.
     const strand = (x) => ss(0.08, 0.16, x);
@@ -239,6 +239,14 @@
       const before = holdSec;
       holdSec = holding ? holdSec + dt : 0;
       if (bgPress && before <= YELLOW_AFTER_SEC && holdSec > YELLOW_AFTER_SEC) bell("ripen");
+
+      // Dragging while holding plays a note each time the cursor crosses into a new
+      // pitch zone: single notes while green, a brighter harmony once it's yellow.
+      if (holding && bgPress && window.catalystSound) {
+        const z = window.catalystSound.zone(p.mouseX / p.width);
+        if (dragZone !== null && z !== dragZone) bell("drag", z, holdSec > YELLOW_AFTER_SEC);
+        dragZone = z;
+      } else dragZone = null;
       if (holding) greenLife = 1500;
       if (greenLife > 0) {
         greenLife--;
