@@ -33,7 +33,7 @@ You need to do these steps yourself. Use a personal Google account for steps 1�
 3. **Create the service account.** Go to <https://console.cloud.google.com/iam-admin/serviceaccounts> → **Create service account**. Name it `catalyst-sync`, click **Create and continue**, skip the role and access steps, and click **Done**. Copy its email address (something like `catalyst-sync@the-catalyst-site.iam.gserviceaccount.com`).
 4. **Make a key.** Click the service account → **Keys** → **Add key** → **Create new key** → **JSON** → **Create**. A `.json` file downloads. Treat it like a password: don't email it or commit it.
 5. **Share the files.** In the Sheet and in the Scripts doc, click **Share**, paste the service account's email, choose **Viewer**, untick *Notify people*, and click **Share**.
-6. **Add two GitHub secrets.** Go to <https://github.com/leilow/the-catalyst/settings/secrets/actions> → **New repository secret**, twice:
+6. **Add two GitHub secrets.** Go to <https://github.com/leilow/catalyst/settings/secrets/actions> → **New repository secret**, twice:
    - `GOOGLE_SERVICE_ACCOUNT_JSON`: open the downloaded `.json` file in TextEdit, then copy and paste its whole contents.
    - `CATALYST_SHEET_ID`: the part of the Sheet's URL between `/d/` and `/edit`. It's a secret because the repo is public; until step 8, anyone with the ID could open the Sheet and, through its Script links, the Doc.
 7. **Test it.** Go to **Actions** → **Build and publish** → **Run workflow**. Open the finished run to read its summary.
