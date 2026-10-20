@@ -1,0 +1,4 @@
+dist/
+.cache/
+.claude/
+.DS_Store

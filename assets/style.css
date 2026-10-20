@@ -1,0 +1,250 @@
+:root {
+  --mist: #d6e4f0;
+  --mist-deep: #c9dae8;
+  --ink: #24323f;
+  --ink-soft: #4a5b6a;
+  --rule: #9fb2c3;
+  --serif: "EB Garamond", Georgia, "Times New Roman", serif;
+  --sans: system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--mist);
+  color: var(--ink);
+  font-family: var(--serif);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--ink); }
+
+:focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
+
+.meta {
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+}
+
+/* Outlined link boxes (Bytemarks ↗, ← The Catalyst, …) */
+.chip {
+  font-family: var(--sans);
+  font-size: 12px;
+  border: 0.5px solid var(--ink);
+  border-radius: 3px;
+  padding: 3px 7px;
+  text-decoration: none;
+  white-space: nowrap;
+  background: transparent;
+  color: var(--ink);
+}
+
+/* Italic titles that underline on hover/focus, or when their episode is open */
+.index a:hover .t, .index a:focus-visible .t, .index a.current .t,
+.pager a:hover .t, .pager a:focus-visible .t {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.12em;
+}
+
+/* ---- Main page ---- */
+
+#pattern {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+#pattern canvas { display: block; }
+
+.home {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  padding: 24px 24px 32px;
+  display: flex;
+  flex-direction: column;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation; /* no double-tap zoom on the main page; pinch zoom still works */
+}
+
+.home-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 4vh;
+}
+
+/* Tag buttons: filled pills, so they read as controls rather than links */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 4vh; }
+.tags .tag {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--ink);
+  background: rgba(36, 50, 63, 0.08);
+  border: 0;
+  border-radius: 999px;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.tags .tag:hover { background: rgba(36, 50, 63, 0.16); }
+.tags .tag[aria-pressed="true"] { background: var(--ink); color: var(--mist); }
+
+.index {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+}
+.index li { margin: 0; transition: opacity 0.4s ease; }
+.index li.dim { opacity: 0.22; }
+.index a {
+  display: inline;
+  text-decoration: none;
+  font-style: italic;
+  font-size: clamp(30px, 5.4vw, 64px);
+  line-height: 1.12;
+}
+.index .d {
+  font-style: normal;
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-left: 0.6em;
+  vertical-align: 0.9em;
+  white-space: nowrap;
+}
+
+.home-foot {
+  margin-top: 10vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+.onair p { margin: 0; line-height: 1.6; }
+.links { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; margin-left: auto; }
+
+/* Episode panel: on wide screens, episodes slide in over the right half of the main page */
+.panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(52vw, 760px);
+  z-index: 5;
+  overflow-y: auto;
+  background: var(--mist);
+  border-left: 0.5px solid var(--rule);
+  transform: translateX(100%);
+  transition: transform 0.35s ease;
+  outline: none;
+}
+.panel.open { transform: none; }
+.panel .ep { padding-top: 20px; }
+.panel .ep-head .close { order: 2; font-size: 14px; line-height: 1; padding: 3px 8px; }
+
+/* ---- Episode page ---- */
+
+.ep {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 24px 20px 64px;
+}
+.ep-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.ep h1 {
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(36px, 7vw, 48px);
+  line-height: 1.08;
+  margin: 6px 0 22px;
+}
+.ep .img {
+  aspect-ratio: 3 / 2;
+  background: var(--mist-deep);
+  border-radius: 2px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.ep .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ep .one {
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.35;
+  margin: 0 0 24px;
+}
+
+.player { display: flex; align-items: center; gap: 12px; margin: 0 0 8px; }
+.player button {
+  width: 32px; height: 32px; flex: none;
+  border-radius: 50%;
+  border: 0.5px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0;
+}
+.player svg { width: 12px; height: 12px; fill: var(--ink); }
+.player input[type="range"] {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 16px;
+  background: transparent;
+  cursor: pointer;
+}
+.player input[type="range"]::-webkit-slider-runnable-track { height: 1px; background: linear-gradient(var(--ink), var(--ink)) 0 / var(--p, 0%) 100% no-repeat, var(--rule); }
+.player input[type="range"]::-moz-range-track { height: 1px; background: var(--rule); }
+.player input[type="range"]::-moz-range-progress { height: 1px; background: var(--ink); }
+.player input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 9px; height: 9px; border-radius: 50%; background: var(--ink); margin-top: -4px; }
+.player input[type="range"]::-moz-range-thumb { width: 9px; height: 9px; border: 0; border-radius: 50%; background: var(--ink); }
+.player .time { min-width: 72px; text-align: right; }
+.full { margin: 0 0 36px 44px; }
+
+.script { font-size: 19px; line-height: 1.62; }
+.script p { margin: 0 0 16px; }
+.small-line { margin: 28px 0 0; line-height: 1.8; }
+.small-line + .small-line { margin-top: 2px; }
+
+/* Previous / next */
+.pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 48px;
+  padding-top: 20px;
+  border-top: 0.5px solid var(--rule);
+}
+.pager a { text-decoration: none; display: flex; flex-direction: column; gap: 2px; max-width: 48%; }
+.pager .meta { font-size: 11px; }
+.pager .next { text-align: right; margin-left: auto; }
+.pager .t { font-style: italic; font-size: 16px; line-height: 1.25; }
+
+/* ---- Phones ---- */
+
+@media (max-width: 600px) {
+  .home { padding: 18px 16px 24px; }
+  .home-head { flex-direction: column; gap: 6px; }
+  .index a { line-height: 1.16; }
+  .index li { margin-bottom: 6px; }
+  .index .d { display: block; margin: 0 0 4px; vertical-align: 0; }
+  .links { justify-content: flex-start; margin-left: 0; }
+  .ep { padding: 18px 16px 48px; }
+  .full { margin-left: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel { transition: none; }
+}
