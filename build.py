@@ -79,6 +79,7 @@ def head(title, description, prefix, path="", image="assets/og-card.jpg", size=(
 <meta property="og:image:height" content="{size[1]}">
 <meta property="og:image:alt" content="{e(title)}">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{e(img)}">
 <meta name="theme-color" content="#d6e4f0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -172,10 +173,10 @@ def home_page(episodes):
     </div>
   </footer>
 </main>
-<script src="{P5}"></script>
-<script src="assets/sketch.js?v={VERSION}"></script>
-<script src="assets/site.js?v={VERSION}"></script>
-<script src="assets/sound.js?v={VERSION}"></script>
+<script src="{P5}" defer></script>
+<script src="assets/sketch.js?v={VERSION}" defer></script>
+<script src="assets/site.js?v={VERSION}" defer></script>
+<script src="assets/sound.js?v={VERSION}" defer></script>
 </body>
 </html>
 """
@@ -198,7 +199,7 @@ def episode_page(ep, older=None, newer=None):
     pager = (f'<nav class="pager" aria-label="More episodes">'
              f'{step(older, "← Previous", "prev")}{step(newer, "Next →", "next")}</nav>')
     image = (
-        f'<div class="img"><img src="{pre}{e(ep["image"])}" alt="" width="1232" height="928"></div>' if ep.get("image") else ''
+        f'<div class="img"><img src="{pre}{e(ep["image"])}" alt="" width="1232" height="928" decoding="async"></div>' if ep.get("image") else ''
     )
     script = "\n".join(f"    <p>{e(p)}</p>" for p in ep["script"])
     sources = ", ".join(f'<a href="{e(s["url"])}">{e(s["name"])}</a>' for s in ep["sources"])
@@ -229,7 +230,7 @@ def episode_page(ep, older=None, newer=None):
   <p class="small-line meta">Tags: {tags}</p>
   {pager}
 </main>
-<script src="{pre}assets/site.js?v={VERSION}"></script>
+<script src="{pre}assets/site.js?v={VERSION}" defer></script>
 </body>
 </html>
 """

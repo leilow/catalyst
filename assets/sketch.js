@@ -141,8 +141,10 @@
       // within seconds instead of minutes.
       const spores = Math.round((W * H) / 450);
       for (let i = 0; i < spores; i++) addV(Math.floor(Math.random() * W), Math.floor(Math.random() * H), 1, 0.5);
-      for (let s = 0; s < 500; s++) step();
-      warmup = reduced ? 0 : 180;
+      // Only a quick head start here, so the page appears right away; the rest of
+      // the growth happens on screen during the warm-up below.
+      for (let s = 0; s < 60; s++) step();
+      warmup = reduced ? 0 : 240;
     }
 
     function step() {
@@ -218,7 +220,7 @@
       heat *= 0.97;
 
       // For the first few seconds after load, grow faster so the page settles into its pattern.
-      const boost = warmup > 0 ? 30 * (warmup-- / 180) : 0;
+      const boost = warmup > 0 ? 40 * (warmup-- / 240) : 0;
       const steps = Math.max(2, Math.round((10 + boost + (reduced ? 0 : heat * STIR * 26)) * slow));
       for (let s = 0; s < steps; s++) {
         if (inside && s % 2 === 0) advect(mx, my);
