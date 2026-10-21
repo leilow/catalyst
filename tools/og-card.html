@@ -102,8 +102,10 @@
   cctx.putImageData(img, 0, 0);
 
   const card = document.createElement("canvas");
-  card.width = CW; card.height = CH;
+  // Drawn at 2× (2400×1260) so text stays crisp after LinkedIn and others scale it down.
+  card.width = CW * 2; card.height = CH * 2;
   const ctx = card.getContext("2d");
+  ctx.scale(2, 2);
   ctx.imageSmoothingEnabled = true;
   ctx.imageSmoothingQuality = "high";
   ctx.drawImage(cells, 0, 0, CW, CH);
@@ -113,13 +115,12 @@
   ctx.font = 'italic 168px "EB Garamond"';
   ctx.textBaseline = "alphabetic";
   ctx.fillText("The Catalyst", 72, 330);
-  ctx.font = "26px system-ui, -apple-system, Helvetica, Arial, sans-serif";
-  ctx.fillStyle = INK;
-  ctx.fillText("A bi-weekly tech byte on Bytemarks Café, Hawaiʻi Public Radio", 78, 420);
-  ctx.fillStyle = INK;
+  // Larger and a little heavier than on the site, so it survives thumbnail size.
+  ctx.font = "500 32px system-ui, -apple-system, Helvetica, Arial, sans-serif";
+  ctx.fillText("A bi-weekly tech byte on Bytemarks Café, Hawaiʻi Public Radio", 78, 428);
   ctx.fillText("naeolokani.com/catalyst", 78, 560);
 
-  const url = card.toDataURL("image/jpeg", 0.88);
+  const url = card.toDataURL("image/jpeg", 0.92);
   document.getElementById("out").src = url;
   window.__card = url;
   document.getElementById("status").textContent = "ready";

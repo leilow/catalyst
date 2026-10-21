@@ -58,9 +58,9 @@ def clock(hhmm):
     return f"{(h % 12) or 12}:{m:02d}{'am' if h < 12 else 'pm'}"
 
 
-def head(title, description, prefix, path="", image="assets/og-card.jpg", size=(1200, 630), kind="website"):
+def head(title, description, prefix, path="", image="assets/og-card.jpg", size=(2400, 1260), kind="website"):
     """Page head. path and image are relative to SITE_URL; they become absolute for share previews."""
-    url, img = SITE_URL + path, SITE_URL + image
+    url, img = SITE_URL + path, f"{SITE_URL}{image}?v={VERSION}"  # ?v= makes apps re-fetch an updated image
     return f"""<!doctype html>
 <html lang="en">
 <head>
