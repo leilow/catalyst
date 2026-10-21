@@ -28,6 +28,7 @@ BYTEMARKS_HOME = "https://bytemarkscafe.org/"
 NPR_PODCAST = "https://www.npr.org/podcasts/381443570/bytemarks-caf"
 HPR_PROFILE = "https://www.hawaiipublicradio.org/people/leimomi"
 LINKEDIN = "https://www.linkedin.com/in/leimomibong/"
+SITE_URL = "https://naeolokani.com/catalyst/"  # used for share previews and canonical links
 
 # When The Catalyst airs, inside Bytemarks Café (Fridays, 6:30 pm on HPR-1).
 # Set AIR_WEEKS to [] to switch to every Friday.
@@ -57,7 +58,9 @@ def clock(hhmm):
     return f"{(h % 12) or 12}:{m:02d}{'am' if h < 12 else 'pm'}"
 
 
-def head(title, description, prefix):
+def head(title, description, prefix, path="", image="assets/og-card.jpg", size=(1200, 630), kind="website"):
+    """Page head. path and image are relative to SITE_URL; they become absolute for share previews."""
+    url, img = SITE_URL + path, SITE_URL + image
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -65,8 +68,17 @@ def head(title, description, prefix):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(title)}</title>
 <meta name="description" content="{e(description)}">
+<link rel="canonical" href="{e(url)}">
+<meta property="og:type" content="{kind}">
+<meta property="og:site_name" content="{e(SITE_TITLE)}">
+<meta property="og:url" content="{e(url)}">
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(description)}">
+<meta property="og:image" content="{e(img)}">
+<meta property="og:image:width" content="{size[0]}">
+<meta property="og:image:height" content="{size[1]}">
+<meta property="og:image:alt" content="{e(title)}">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#d6e4f0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -169,6 +181,13 @@ def home_page(episodes):
 """
 
 
+def share_image(ep):
+    """Link previews need JPG or PNG (LinkedIn skips webp). Use the episode's JPG copy
+    in content/images if there is one, otherwise the site's main share card."""
+    jpg = f'images/{ep["date"]}.jpg'
+    return {"image": jpg, "size": (1232, 928)} if (ROOT / "content" / jpg).exists() else {}
+
+
 def episode_page(ep, older=None, newer=None):
     pre = "../../"
     def step(other, label, cls):
@@ -184,7 +203,8 @@ def episode_page(ep, older=None, newer=None):
     script = "\n".join(f"    <p>{e(p)}</p>" for p in ep["script"])
     sources = ", ".join(f'<a href="{e(s["url"])}">{e(s["name"])}</a>' for s in ep["sources"])
     tags = ", ".join(f'<a href="{pre}?tag={e(urllib.parse.quote(t))}">{e(t)}</a>' for t in ep["tags"])
-    return f"""{head(f'{ep["title"]} — {SITE_TITLE}', ep["oneLiner"], pre)}
+    return f"""{head(f'{ep["title"]} · {SITE_TITLE}', ep["oneLiner"], pre, path=f'episodes/{ep["slug"]}/', kind="article",
+        **share_image(ep))}
 <body>
 <main class="ep">
   <div class="ep-head">

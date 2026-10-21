@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Share card generator</title>
+<!--
+  Draws the 1200×630 link-preview card from the same reaction–diffusion pattern
+  as the main page, with a hint of the hidden mint and yellow bloom.
+  Open it from the built site (python3 build.py --serve, then /tools/og-card.html),
+  wait for "ready", then right-click the image and save it as assets/og-card.jpg.
+-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@1&display=swap">
+<style>
+  body { margin: 0; background: #888; font-family: system-ui, sans-serif; }
+  p { color: #fff; margin: 12px; }
+  img { display: block; width: 1200px; height: 630px; }
+</style>
+</head>
+<body>
+<p id="status">rendering…</p>
+<img id="out" alt="">
+<script>
+(async function () {
+  const CW = 1200, CH = 630, PX = 360 / 85;              // same scale as the site
+  // The site's colors, deepened a little so the pattern still reads as a small thumbnail.
+  const BG = [214, 228, 240], FG = [184, 204, 225];
+  const GREEN = [188, 220, 199], YELLOW = [236, 222, 176];
+  const INK = "#24323f";
+  const F = 0.0545, K = 0.062, HOLLOW = 0.57, SOFT = 1.0;
+  const W = Math.ceil(CW / PX), H = Math.ceil(CH / PX);
+  const ss = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+
+  // Seeded random so the card comes out the same every time.
+  let seed = 7;
+  const rand = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
+
+  let u = new Float32Array(W * H).fill(1), v = new Float32Array(W * H);
+  let u2 = new Float32Array(W * H), v2 = new Float32Array(W * H);
+  const addV = (cx, cy, r, a) => {
+    for (let y = -r; y <= r; y++) for (let x = -r; x <= r; x++) {
+      if (x * x + y * y > r * r) continue;
+      const i = ((cy + y + H) % H) * W + ((cx + x + W) % W);
+      v[i] = Math.min(1, v[i] + a); u[i] = Math.max(0, u[i] - a * 0.5);
+    }
+  };
+  for (let i = 0; i < 9; i++) {
+    const a = i * 2.39996, r = 0.16 + 0.3 * Math.sqrt((i + 0.5) / 9);
+    addV(Math.floor((0.5 + r * Math.cos(a)) * W), Math.floor((0.5 + r * Math.sin(a)) * H), 2, 1);
+  }
+  for (let i = 0; i < (W * H) / 450; i++) addV(Math.floor(rand() * W), Math.floor(rand() * H), 1, 0.5);
+
+  const step = () => {
+    for (let y = 0; y < H; y++) {
+      const ym = ((y - 1 + H) % H) * W, yp = ((y + 1) % H) * W, yc = y * W;
+      for (let x = 0; x < W; x++) {
+        const xm = (x - 1 + W) % W, xp = (x + 1) % W, i = yc + x;
+        const lu = 0.2 * (u[yc + xm] + u[yc + xp] + u[ym + x] + u[yp + x]) + 0.05 * (u[ym + xm] + u[ym + xp] + u[yp + xm] + u[yp + xp]) - u[i];
+        const lv = 0.2 * (v[yc + xm] + v[yc + xp] + v[ym + x] + v[yp + x]) + 0.05 * (v[ym + xm] + v[ym + xp] + v[yp + xm] + v[yp + xp]) - v[i];
+        const uvv = u[i] * v[i] * v[i];
+        u2[i] = u[i] + lu - uvv + F * (1 - u[i]);
+        v2[i] = v[i] + 0.5 * lv + uvv - (K + F) * v[i];
+      }
+    }
+    let t = u; u = u2; u2 = t; t = v; v = v2; v2 = t;
+  };
+  for (let s = 0; s < 6000; s++) step();
+
+  // The hidden bloom: mint spreading along connected strands from a point on the
+  // right, with a yellow heart where someone "held" longest.
+  const strand = (x) => ss(0.05, 0.12, x);
+  const cx = Math.floor(W * 0.80), cy = Math.floor(H * 0.74);
+  const grow = (a, steps, gate) => {
+    let b = new Float32Array(W * H);
+    for (let s = 0; s < steps; s++) {
+      for (let y = -3; y <= 3; y++) for (let x = -3; x <= 3; x++) a[(cy + y) * W + cx + x] = 1;
+      for (let y = 1; y < H - 1; y++) for (let x = 1; x < W - 1; x++) {
+        const i = y * W + x, c = gate(i);
+        b[i] = c === 0 ? a[i] : Math.max(a[i], Math.max(a[i - 1], a[i + 1], a[i - W], a[i + W]) * 0.99 * c);
+      }
+      const t = a; a = b; b = t;
+    }
+    return a;
+  };
+  const g = grow(new Float32Array(W * H), 150, (i) => strand(v[i]));
+  const yl = grow(new Float32Array(W * H), 70, (i) => strand(v[i]) * ss(0.25, 0.5, g[i]));
+
+  const cells = document.createElement("canvas");
+  cells.width = W; cells.height = H;
+  const cctx = cells.getContext("2d"), img = cctx.createImageData(W, H);
+  const w = 0.02 + SOFT * 0.08, e0 = 0.1, peak = e0 + w, c0 = 0.34 - HOLLOW * 0.14;
+  for (let i = 0; i < W * H; i++) {
+    const x = v[i];
+    let t = ss(e0 - w * 0.5, peak, x);
+    t *= 1 - HOLLOW * ss(peak, Math.max(peak + 0.01, c0 + w * 0.5), x);
+    t = Math.min(1, t * 1.8);
+    for (let k = 0; k < 3; k++) {
+      const strandColor = FG[k] + (GREEN[k] - FG[k]) * g[i] + (YELLOW[k] - GREEN[k]) * Math.min(yl[i], g[i]);
+      img.data[i * 4 + k] = BG[k] + (strandColor - BG[k]) * t;
+    }
+    img.data[i * 4 + 3] = 255;
+  }
+  cctx.putImageData(img, 0, 0);
+
+  const card = document.createElement("canvas");
+  card.width = CW; card.height = CH;
+  const ctx = card.getContext("2d");
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = "high";
+  ctx.drawImage(cells, 0, 0, CW, CH);
+
+  await document.fonts.load('italic 168px "EB Garamond"');
+  ctx.fillStyle = INK;
+  ctx.font = 'italic 168px "EB Garamond"';
+  ctx.textBaseline = "alphabetic";
+  ctx.fillText("The Catalyst", 72, 330);
+  ctx.font = "26px system-ui, -apple-system, Helvetica, Arial, sans-serif";
+  ctx.fillStyle = INK;
+  ctx.fillText("A bi-weekly tech byte on Bytemarks Café, Hawaiʻi Public Radio", 78, 420);
+  ctx.fillStyle = INK;
+  ctx.fillText("naeolokani.com/catalyst", 78, 560);
+
+  const url = card.toDataURL("image/jpeg", 0.88);
+  document.getElementById("out").src = url;
+  window.__card = url;
+  document.getElementById("status").textContent = "ready";
+})();
+</script>
+</body>
+</html>
