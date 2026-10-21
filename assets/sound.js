@@ -51,8 +51,14 @@
       notes.forEach((n, i) => b.triggerAttackRelease(n, 2.5, t + i * gap, velocity));
     });
 
-  // Unlock audio on the first background press, even before a bell is asked for.
-  document.addEventListener("pointerdown", () => { ready(); }, { once: true, passive: true });
+  // Load on the first press. Safari only allows audio to start during a click or tap,
+  // and the library finishes loading after that moment has passed, so every press
+  // also nudges the audio awake if the browser has left it suspended.
+  const wake = () => {
+    if (window.Tone && Tone.getContext().state !== "running") Tone.start();
+    ready();
+  };
+  ["pointerdown", "touchend", "keydown"].forEach((t) => document.addEventListener(t, wake, { passive: true }));
 
   window.catalystSound = {
     // xFrac: 0 at the left edge of the screen, 1 at the right. Picks the pitch.
