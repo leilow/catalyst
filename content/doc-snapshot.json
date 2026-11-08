@@ -1,5 +1,26 @@
 {
   "_note": "The Doc text sync_content.py last checked each episode against, so it can report what changed in the Doc. Not used by the site.",
+  "2026-11-06": {
+    "oneLiner": "",
+    "script": [
+      "In late October, Mozilla brought its annual festival, MozFest, to Barcelona. A champion of the open internet, it's now taking that fight to artificial intelligence. The theme was wilding: technology built like a forest, not a fortress — open, regenerative, and made for community.",
+      "Mozilla's ties to the Pacific run deep. Te Hiku Media, a Māori-owned media group in Aotearoa, built speech recognition for the Māori language on Mozilla's open-source DeepSpeech technology, and that work has earned a Mozilla award. Now Te Hiku — whose chief technology officer, Keoni Mahelona, grew up on Kauaʻi — is bringing it to Hawaiʻi through a project called Lauleo.",
+      "In Barcelona, Fibre Fale co-founders Julia Pahina and Eteroa Lafaele asked what changes when Pacific knowledge is the foundation of technology, not an add-on. Their meaalofa — their gift — was the Hibiscus Impact Model, with an invitation to join the weave.",
+      "Closer to home, Native Hawaiian scientists Josiah Hester and Keolu Fox left their labs to argue, as they had in Civil Beat, that AI is the next global plantation — unless Native communities govern their own data.",
+      "Jamaica Osorio's book Remembering Our Intimacies made the festival reading list, and composer Leilehua Lanzilotti joined Mozilla's first Artists Make Technology cohort with a project to turn Queen Liliʻuokalani's koa piano into an open-source instrument.",
+      "From the Pacific to the Atlantic, the seeds are being planted — scientists out of the lab, community groups at the table where the next internet gets built, Hawaiian epistemology woven into an international festival's fabric, and artists tracing lineage through technology. That's homegrown inspiration worth celebrating.",
+      "Global funders are already betting on this work. So who here at home — at the Capitol, or among investors local and beyond — will make that same bet on indigenous innovation, and new frontiers rooted in values?"
+    ],
+    "sources": [
+      "https://www.mozillafoundation.org/en/festival/",
+      "https://blog.mozilla.org/en/internet-culture/keoni-mahelona-mozilla-rise-25-data-protection/",
+      "https://talks.cam.ac.uk/talk/index/113905",
+      "https://kawaiola.news/on-the-continent/faces-of-the-diaspora-building-artificial-intelligence-through-a-native-lens/",
+      "https://www.rnz.co.nz/national/programmes/saturday/audio/2018999217/trailblazing-tech-julia-pahina-and-eteroa-lafaele",
+      "https://www.mozillafoundation.org/en/what-we-do/artists-make-technology/liliuokalanis-piano/",
+      "https://www.civilbeat.org/author/keolu-fox/"
+    ]
+  },
   "2026-10-16": {
     "oneLiner": "Practitioners knew which plants worked. The lab is figuring out why — and how to grow them stronger.",
     "script": [
