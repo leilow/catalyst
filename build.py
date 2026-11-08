@@ -199,7 +199,7 @@ def episode_page(ep, older=None, newer=None):
     pager = (f'<nav class="pager" aria-label="More episodes">'
              f'{step(older, "← Previous", "prev")}{step(newer, "Next →", "next")}</nav>')
     image = (
-        f'<div class="img"><img src="{pre}{e(ep["image"])}" alt="" width="1232" height="928" decoding="async"></div>' if ep.get("image") else ''
+        f'<div class="img"><img src="{pre}{e(ep["image"])}?v={VERSION}" alt="" width="1232" height="928" decoding="async"></div>' if ep.get("image") else ''
     )
     script = "\n".join(f"    <p>{e(p)}</p>" for p in ep["script"])
     sources = ", ".join(f'<a href="{e(s["url"])}">{e(s["name"])}</a>' for s in ep["sources"])
