@@ -38,7 +38,10 @@
           modulation: { type: "sine" },
           envelope: { attack: 0.004, decay: 2.8, sustain: 0, release: 2.8 },
           modulationEnvelope: { attack: 0.002, decay: 0.6, sustain: 0, release: 0.6 },
-          volume: -10,
+          // Matched to the episode audio, which build.py brings to -16 LUFS: a single
+          // press peaks near the speech's typical loudness (about -17 LUFS momentary),
+          // so visitors don't have to change their volume between the bells and the player.
+          volume: -6,
         }).connect(reverb);
         return bells;
       }).catch(() => { loading = null; return null; });
