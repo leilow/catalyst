@@ -110,6 +110,28 @@ def fetch_audio(drive_id):
     return out
 
 
+# Episode audio is brought to a standard podcast loudness (EBU R128 / Apple: -16 LUFS,
+# peaks at most -1.5 dBTP) so every episode plays at the same, comfortable volume.
+LOUDNESS = "loudnorm=I=-16:TP=-1.5:LRA=11"
+
+
+def loud_audio(drive_id):
+    """The episode's audio at podcast loudness, made with ffmpeg once and cached.
+    Without ffmpeg (e.g. a Mac with none installed) the original file is used."""
+    src = fetch_audio(drive_id)
+    if not shutil.which("ffmpeg"):
+        return src
+    out = CACHE / f"{drive_id}.i16.mp3"
+    if out.exists() and out.stat().st_size > 0:
+        return out
+    tmp = CACHE / f"{drive_id}.i16.part.mp3"
+    subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", str(src),
+                    "-af", LOUDNESS, "-ar", "44100", "-codec:a", "libmp3lame", "-b:a", "128k",
+                    "-map_metadata", "0", str(tmp)], check=True)
+    tmp.rename(out)
+    return out
+
+
 def fetch_image(drive_id):
     """Like fetch_audio, for an episode image (WebP, JPEG or PNG)."""
     IMAGE_CACHE.mkdir(parents=True, exist_ok=True)
@@ -266,7 +288,7 @@ def build():
         older = episodes[i + 1] if i + 1 < len(episodes) else None
         newer = episodes[i - 1] if i > 0 else None
         (out / "index.html").write_text(episode_page(ep, older, newer), encoding="utf-8")
-        shutil.copyfile(fetch_audio(ep["audioDriveId"]), DIST / "audio" / f'{ep["slug"]}.mp3')
+        shutil.copyfile(loud_audio(ep["audioDriveId"]), DIST / "audio" / f'{ep["slug"]}.mp3')
         print(f'  built {ep["slug"]}')
     print(f"Done: {len(episodes)} episodes in {DIST}")
 
