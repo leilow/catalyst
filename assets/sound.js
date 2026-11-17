@@ -28,7 +28,9 @@
         document.head.appendChild(s);
       }).then(async () => {
         await Tone.start();
-        const reverb = new Tone.Reverb({ decay: 5, wet: 0.45 }).toDestination();
+        // The limiter keeps chords and fast drags from clipping now that the bells are louder.
+        const limiter = new Tone.Limiter(-1).toDestination();
+        const reverb = new Tone.Reverb({ decay: 5, wet: 0.45 }).connect(limiter);
         bells = new Tone.PolySynth(Tone.FMSynth, {
           harmonicity: 3.01,
           modulationIndex: 6,
@@ -36,7 +38,7 @@
           modulation: { type: "sine" },
           envelope: { attack: 0.004, decay: 2.8, sustain: 0, release: 2.8 },
           modulationEnvelope: { attack: 0.002, decay: 0.6, sustain: 0, release: 0.6 },
-          volume: -20,
+          volume: -10,
         }).connect(reverb);
         return bells;
       }).catch(() => { loading = null; return null; });
